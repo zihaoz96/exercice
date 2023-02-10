@@ -1,1 +1,22 @@
-<p>formulair works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username" (keyup)="statusInput.usernameError = false">
+    <div *ngIf="(loginForm.get('username')!.invalid && loginForm.get('username')!.touched) || statusInput.usernameError">
+      <small [style.color]="'red'">
+        Username is required!
+      </small>
+    </div>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" formControlName="password" (keyup)="statusInput.passwordError = false">
+    <div *ngIf="(loginForm.get('password')!.invalid && loginForm.get('password')!.touched) || statusInput.passwordError">
+      <small [style.color]="'red'">
+        Password is required!
+      </small>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

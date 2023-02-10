@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'exercice';
+
+  checkSession(){
+    return sessionStorage.getItem('username')
+  }
+
+  logout(){
+    sessionStorage.removeItem('username')
+    location.reload()
+  }
 }
